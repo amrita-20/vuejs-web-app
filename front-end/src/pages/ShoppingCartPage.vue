@@ -5,15 +5,7 @@
             <p>Your cart is empty.</p>
         </div>
         <div v-if="cartItems.length > 0">
-            <div v-for="cartItem in cartItems" class="product-container" :key="cartItem.id">
-                <img class="product-image" :src="cartItem.imageName" :alt="cartItem.name" />
-                <div class="details-wrap">
-                    <h3>{{ cartItem.name }}</h3>
-                    <p>{{ cartItem.price }}</p>
-                    <p>Quantity: {{ cartItem.quantity }}</p>
-                </div>
-                <button class="remove-button">Remove from Cart</button>
-            </div>
+           <ShoppingCartList :cartItems="cartItems" />
         </div>
     </div>
     <button class="checkout-button">Checkout</button>
@@ -21,8 +13,12 @@
 
 <script>
 import { cartItems } from '@/temp-data';
+import ShoppingCartList from '@/components/ShoppingCartList.vue';
 export default {
     name: 'ShoppingCartPage',
+    components: {
+        ShoppingCartList
+    },
     data() {
         return {
             cartItems
