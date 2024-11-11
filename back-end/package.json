@@ -1,0 +1,19 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "cd src && nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@babel/cli": "^7.25.9",
+    "@babel/plugin-transform-runtime": "^7.25.9",
+    "express": "^4.21.1",
+    "nodemon": "^3.1.7"
+  }
+}
