@@ -1,6 +1,6 @@
 <template>
     <div v-for="cartItem in cartItems" class="product-container" :key="cartItem.id">
-        <img class="product-image" :src="cartItem.imageName" :alt="cartItem.name" />
+        <img class="product-image" :src="cartItem.imageUrl" :alt="cartItem.name" />
         <div class="details-wrap">
             <h3>{{ cartItem.name }}</h3>
             <p>{{ cartItem.price }}</p>
@@ -11,13 +11,17 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     name: 'ShoppingCartList',
-    props: {
-        cartItems: {
-            type: Array,
-            required: true
+    data() {
+        return {
+            cartItems: []
         }
+    },
+    async created() {
+        const response = await axios.get('/api/users/12345/cart');
+        this.cartItems = response.data;
     }
 }
 </script>

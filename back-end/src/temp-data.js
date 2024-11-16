@@ -4,12 +4,12 @@ export const products = [{
     id: '123',
     name: 'Basil',
     price: '$26.00',
-   imageUrl: '/images/basil-bottle.webp',
+    imageUrl: '/images/basil-bottle.webp',
 }, {
     id: '234',
     name: 'Lemon',
     price: '$26.00',
-   imageUrl: '/images/lemon-bottle.webp',
+    imageUrl: '/images/lemon-bottle.webp',
 }, {
     id: '345',
     name: 'Garlic',

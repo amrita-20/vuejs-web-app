@@ -5,6 +5,7 @@ import {
   products as productsRaw,
 } from "./temp-data.js";
 import dotenv from "dotenv";
+import path from 'path';
 
 dotenv.config({ path: "../.env" });
 
@@ -33,12 +34,15 @@ async function init() {
     );
   }
 
-  app.get("/products", async (req, res) => {
-    const products = database.collection("products").find({}).toArray();
+  const __dirname = path.dirname(new URL(import.meta.url).pathname);
+  app.use('/images', express.static(path.join(__dirname, '../assets')));
+
+  app.get("/api/products", async (req, res) => {
+    const products = await database.collection("products").find({}).toArray();
     res.json(products);
   });
 
-  app.get("/users/:userId/cart", async (req, res) => {
+  app.get("/api/users/:userId/cart", async (req, res) => {
     const user = await database
       .collection("users")
       .findOne({ id: req.params.userId });
@@ -46,14 +50,14 @@ async function init() {
     res.json(populatedCart);
   });
 
-  app.get("/products/:id", async (req, res) => {
+  app.get("/api/products/:id", async (req, res) => {
     const product = await database
       .collection("products")
       .findOne({ id: req.params.id });
     res.json(product);
   });
 
-  app.post("/users/:userId/cart", async(req, res) => {
+  app.post("/api/users/:userId/cart", async(req, res) => {
     const userId = req.params.userId;
     const productId = req.body.id;
 
@@ -72,7 +76,7 @@ async function init() {
     res.json(populatedCartItems);
   });
 
-  app.delete("/users/:userId/cart/:id", async (req, res) => {
+  app.delete("/api/users/:userId/cart/:id", async (req, res) => {
     await database
     .collection("users")
     .updateOne({ id: req.params.userId }, {
