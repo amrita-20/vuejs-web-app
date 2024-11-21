@@ -6,22 +6,18 @@
             <p>{{ cartItem.price }}</p>
             <p>Quantity: {{ cartItem.quantity }}</p>
         </div>
-        <button class="remove-button">Remove from Cart</button>
+        <button @click="$emit('remove-from-cart', cartItem.id)" class="remove-button">Remove from Cart</button>
     </div>
 </template>
 
 <script>
-import axios from 'axios';
 export default {
     name: 'ShoppingCartList',
-    data() {
-        return {
-            cartItems: []
+    props: {
+        cartItems: {
+            type: Array,
+            required: true
         }
-    },
-    async created() {
-        const response = await axios.get('/api/users/12345/cart');
-        this.cartItems = response.data;
     }
 }
 </script>
