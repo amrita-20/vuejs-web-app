@@ -92,6 +92,8 @@
   
   .grey-button {
     background-color: #888;
+    width: 100%;
+    margin-top: 16px;
   }
   
   .nav-bar {
