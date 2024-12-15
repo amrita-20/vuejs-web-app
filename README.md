@@ -19,7 +19,9 @@ A shopping cart application built with **Node.js** and **Express** for the backe
 
 ### Frontend  
 - Vue.js for building the UI  
-- Axios for handling API requests  
+- Axios for handling API requests
+- vite for project creation
+- webpack bundler 
 
 ### Backend  
 - Node.js and Express for server-side logic  
